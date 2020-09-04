@@ -14,13 +14,14 @@
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
   "python.linting.pylintArgs": ["--max-line-length", "120", "--aggressive"],
+  "python.formatting.autopep8Args": ["--max-line-length=200"],
   "python.autoComplete.addBrackets": true,
   "python.globalModuleInstallation": true,
   "python.venvFolders": [],
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/utils/snips"],
   "python.jediEnabled": false,
   "signature.target": "echo"
- // "python.jediPath": "/usr/local/bin/python3"
+  // "python.jediPath": "/usr/local/bin/python3"
   // "suggest.autoTrigger": "trigger",
   // "suggest.triggerAfterInsertEnter": true
 }

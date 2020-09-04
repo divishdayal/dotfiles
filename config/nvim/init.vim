@@ -204,8 +204,8 @@ call plug#begin('~/.config/nvim/plugged')
 	
 	" Code commenter
 		Plug 'scrooloose/nerdcommenter'
-
-
+		nnoremap <leader>c <Plug>NERDCommenterToggle
+		
 	" coc 
         Plug 'neoclide/coc.nvim', {'branch': 'release'}	
 		source $HOME/.config/nvim/plug-config/coc.vim
