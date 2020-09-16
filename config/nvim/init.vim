@@ -31,9 +31,7 @@ call plug#begin('~/.config/nvim/plugged')
     set backspace=indent,eol,start " make backspace behave in a sane manner
     set clipboard=unnamed
 
-    if has('mouse')
-        set mouse=a
-    endif
+	set mouse=n
 
     " Searching
     set ignorecase " case insensitive searching
@@ -201,6 +199,9 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug '907th/vim-auto-save'
 	let g:auto_save = 1  " enable AutoSave on Vim startup
 	let g:auto_save_silent = 1  " do not display the auto-save notification
+
+
+	Plug 'scrooloose/syntastic'
 	
 	" Code commenter
 		Plug 'scrooloose/nerdcommenter'
@@ -234,7 +235,8 @@ call plug#begin('~/.config/nvim/plugged')
 		source $HOME/.config/nvim/plug-config/startify.vim
 	
 	" NERDTree
-	Plug 'preservim/nerdtree'
+	Plug 'preservim/nerdtree' | 
+				\ Plug 'Xuyuanp/nerdtree-git-plugin' 
 	source $HOME/.config/nvim/plug-config/nerdtree.vim
 
 	" fzf
@@ -270,19 +272,38 @@ call plug#begin('~/.config/nvim/plugged')
 
 	Plug 'easymotion/vim-easymotion'
 	map <leader> <Plug>(easymotion-prefix)
-	let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+	let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz;'
+
+	nmap s <Plug>(easymotion-s2)
+	nmap t <Plug>(easymotion-t2)
+
+	map <Leader>l <Plug>(easymotion-lineforward)
+	map <Leader>j <Plug>(easymotion-j)
+	map <Leader>k <Plug>(easymotion-k)
+	map <Leader>h <Plug>(easymotion-linebackward)
+	let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
+	map  / <Plug>(easymotion-sn)
+	omap / <Plug>(easymotion-tn)
+	let g:EasyMotion_smartcase = 1
+
+	" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+	" Without these mappings, `n` & `N` works fine. (These mappings just provide
+	" different highlight method and have some other features )
+	map  n <Plug>(easymotion-next)
+	map  N <Plug>(easymotion-prev)
 
 	" incsearch
-	Plug 'haya14busa/incsearch.vim'
-	map / <Plug>(incsearch-forward)
-	map ? <Plug>(incsearch-backward)
-	map g/ <Plug>(incsearch-stay)
+	"Plug 'haya14busa/incsearch.vim'
+	"map / <Plug>(incsearch-forward)
+	"map ? <Plug>(incsearch-backward)
+	"map g/ <Plug>(incsearch-stay)
 
 	" incsearch-easymotion
-	Plug 'haya14busa/incsearch-easymotion.vim'
-	map z/ <Plug>(incsearch-easymotion-/)
-	map z? <Plug>(incsearch-easymotion-?)
-	map zg/ <Plug>(incsearch-easymotion-stay)
+	"Plug 'haya14busa/incsearch-easymotion.vim'
+	"map z/ <Plug>(incsearch-easymotion-/)
+	"map z? <Plug>(incsearch-easymotion-?)
+	"map zg/ <Plug>(incsearch-easymotion-stay)
 
 	"argwrap
 	Plug 'FooSoft/vim-argwrap'
@@ -294,6 +315,10 @@ call plug#begin('~/.config/nvim/plugged')
 	" Rainbox Parenthesis
 	Plug 'frazrepo/vim-rainbow'
 	let g:rainbow_active = 1
+
+	"tagbar
+	Plug 'majutsushi/tagbar'
+	map <leader>t :TagbarToggle<CR>
 
 call plug#end()
 
