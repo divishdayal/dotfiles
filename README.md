@@ -3,6 +3,7 @@ dotfiles for sytem shell and editor configurations
 
 ```
 1. sudo apt install neovim <install neovim>
+for amazon instance : https://gist.github.com/kawaz/393c7f62fe6e857cc3d9
 2. rm -rf .config
 3.<clone this repository>
 4. ln -s dotfiles/config ~/.config
