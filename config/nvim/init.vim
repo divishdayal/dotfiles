@@ -95,6 +95,7 @@ call plug#begin('~/.config/nvim/plugged')
 		autocmd WinLeave * setlocal nocursorline
 	augroup END
 
+
 	" open new split panes to right and bottom, which feels more natural
 	set splitbelow
 	set splitright
@@ -152,6 +153,9 @@ call plug#begin('~/.config/nvim/plugged')
 
     " remap esc
     inoremap jk <esc>
+
+	" remove search highlights
+	nnoremap <leader>x :nohl<CR>
     
     " set paste toggle
     set pastetoggle=<leader>v
@@ -200,9 +204,19 @@ call plug#begin('~/.config/nvim/plugged')
 	let g:auto_save = 1  " enable AutoSave on Vim startup
 	let g:auto_save_silent = 1  " do not display the auto-save notification
 
-
 	Plug 'scrooloose/syntastic'
-	
+	set statusline+=%#warningmsg#
+	set statusline+=%{SyntasticStatuslineFlag()}
+	set statusline+=%*
+	let g:syntastic_python_checkers = ['pyflakes', 'pylint']
+	"let g:syntastic_always_populate_loc_list = 1
+	"let g:syntastic_auto_loc_list = 1
+	let g:syntastic_check_on_open = 1
+	let g:syntastic_check_on_wq = 0
+
+	" illuminate variable/word under the cursor
+		Plug 'rrethy/vim-illuminate'
+		
 	" Code commenter
 		Plug 'scrooloose/nerdcommenter'
 		nnoremap <leader>c <Plug>NERDCommenterToggle
@@ -287,11 +301,26 @@ call plug#begin('~/.config/nvim/plugged')
 	omap / <Plug>(easymotion-tn)
 	let g:EasyMotion_smartcase = 1
 
+	" Easymotion causes errors after motion
+	 let g:easymotion#is_active = 0
+	function! EasyMotionCoc() abort
+	if EasyMotion#is_active()
+		let g:easymotion#is_active = 1
+		CocDisable
+	else
+		if g:easymotion#is_active == 1
+		let g:easymotion#is_active = 0
+		CocEnable
+		endif
+	endif
+	endfunction
+	autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+
 	" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 	" Without these mappings, `n` & `N` works fine. (These mappings just provide
 	" different highlight method and have some other features )
-	map  n <Plug>(easymotion-next)
-	map  N <Plug>(easymotion-prev)
+	"map  n <Plug>(easymotion-next)
+	"map  N <Plug>(easymotion-prev)
 
 	" incsearch
 	"Plug 'haya14busa/incsearch.vim'

@@ -4,8 +4,8 @@ let g:lightline = {
 	\   'active': {
 	\       'left': [ [ 'mode', 'paste' ],
 	\               [ 'gitbranch'],
-	\               [ 'readonly', 'filename' ]],
-	\       'right': [ [ 'percent' ], [ 'lineinfo' ],
+	\               [ 'readonly', 'filename']],
+	\       'right': [ [ 'percent' ], [ 'lineinfo' ], 
 	\               [ 'gitblame', 'cocstatus', 'linter_errors', 'linter_warnings' ]]
 	\   },
 	\ 'inactive': {
