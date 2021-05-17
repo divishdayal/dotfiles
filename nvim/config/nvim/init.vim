@@ -199,6 +199,10 @@ call plug#begin('~/.config/nvim/plugged')
 " }}}
 
 " General Functionality {{{
+	" display markdown
+	Plug 'vim-pandoc/vim-pandoc' 
+	Plug 'vim-pandoc/vim-pandoc-syntax' 
+
 	" Autosave
 	Plug '907th/vim-auto-save'
 	let g:auto_save = 1  " enable AutoSave on Vim startup
