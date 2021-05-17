@@ -1,4 +1,8 @@
-# dotfiles
+# Install from script
+1. Run `source ubuntu.sh` 
+2. Go to `nvim` in terminal, and type `:PlugInstall`
+
+# Install without script: Steps
 dotfiles for sytem shell and editor configurations
 
 ```
