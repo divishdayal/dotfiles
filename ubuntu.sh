@@ -1,5 +1,4 @@
 cd ~
-git clone git@github.com:divishdayal/dotfiles.git
 sudo apt install neovim
 rm -rf ~/.config
 ln -s ~/dotfiles/config ~/.config
