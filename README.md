@@ -13,6 +13,9 @@ brew install zsh-syntax-highlighting
 brew install zsh-autocomplete
 brew install z
 
+# install node
+brew install node
+
 # get ~/.zshrc
 
 # install oh-my-zsh
