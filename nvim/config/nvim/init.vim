@@ -1,4 +1,4 @@
-" .vimrc / init.vim
+"helpers#startify .vimrc / init.vim
 " The following vim/neovim configuration works for both Vim and NeoVim
 
 " ensure vim-plug is installed and then load it
@@ -158,7 +158,8 @@ call plug#begin('~/.config/nvim/plugged')
 	nnoremap <leader>x :nohl<CR>
     
     " set paste toggle
-    set pastetoggle=<leader>v
+    " set pastetoggle=<leader>v
+	nnoremap <leader>v :set paste!<CR>
 
     " shortcut to save
     nmap <leader>, :w<cr>
@@ -452,3 +453,12 @@ elseif g:python3_host_version < '3.6.1'
         \ printf("Warning: Please use python 3.6.1+ to enable intellisense features. (Current: %s)", g:python3_host_version))
         \ })
 endif
+
+function! ListCommits()
+    let git = 'git -C ' . getcwd()
+    let commits = systemlist(git . ' log --oneline | head -n5')
+    let git_cmd = 'G' . git[1:]
+    return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git_cmd .' show ". matchstr(v:val, "^\\x\\+") }')
+endfunction
+
+

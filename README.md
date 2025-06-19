@@ -1,16 +1,38 @@
-# Install from script
-1. Run `source ubuntu.sh` 
-2. Go to `nvim` in terminal, and type `:PlugInstall`
-
-# Install without script: Steps
-dotfiles for sytem shell and editor configurations
+# Installation
 
 ```
-1. sudo apt install neovim <install neovim>
-for amazon instance : https://gist.github.com/kawaz/393c7f62fe6e857cc3d9
-2. rm -rf .config
-3.<clone this repository>
-4. ln -s dotfiles/nvim/config ~/.config
-5.#install vim-plug from https://github.com/junegunn/vim-plug
+# install brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# install zsh
+brew install zsh
+
+# install plugins
+brew install zsh-autosuggestions
+brew install zsh-syntax-highlighting
+brew install zsh-autocomplete
+brew install z
+
+# get ~/.zshrc
+
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# tmux
+brew install tmux
+ln -s ~/code/dotfiles/tmux/.tmux.conf ~/.tmux.conf
+
+
+# brew install neovim
+brew install neovim
+
+# install vim-plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+# clone https://github.com/divishdayal/dotfiles
+ln -s ~/code/dotfiles/nvim/config/nvim ~/.config/nvim
+
+# for pycharm
+ln -s ~/code/dotfiles/.ideavimrc ~/.ideavimrc
+```
